@@ -2,5 +2,5 @@
 // Copyright (C) Igor Sysoev
 // Copyright (C) Nginx, Inc.
 
-
-nginx   icon  discardable  "src\\os\\win32\\nginx.ico"
+// Правильный вариант в nginx.rc
+1 ICON DISCARDABLE "src/os/win32/nginx.ico"

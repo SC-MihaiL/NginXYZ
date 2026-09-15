@@ -84,6 +84,30 @@ END
 
     else
 
+        # Правило ниже по умолчанию зависит от $NGX_MAKEFILE, который
+        # пересоздаётся с нуля при каждом запуске ./auto/configure - из-за
+        # этого make всегда считает $PCRE/Makefile устаревшим и гоняет
+        # "distclean && configure && make" по новой, даже если PCRE2 уже
+        # собран и ничего не изменилось. Если .a-файл и заголовок уже на
+        # месте - пишем правило-заглушку без зависимостей: make сочтёт цель
+        # выполненной один раз навсегда, пока файл физически существует
+        # (тот же приём, что и для OpenSSL в auto/lib/openssl/make).
+        if [ -f "$PCRE/.libs/libpcre2-8.a" ] && [ -f "$PCRE/src/pcre2.h" ]; then
+
+            echo " + PCRE2 already built in $PCRE, skipping rebuild"
+
+            cat << END                                            >> $NGX_MAKEFILE
+
+$PCRE/src/pcre2.h:
+	@echo "PCRE2 already built, skipping"
+
+$PCRE/.libs/libpcre2-8.a:
+	@echo "PCRE2 already built, skipping"
+
+END
+
+        else
+
         cat << END                                            >> $NGX_MAKEFILE
 
 $PCRE/src/pcre2.h:	$PCRE/Makefile
@@ -99,6 +123,8 @@ $PCRE/.libs/libpcre2-8.a:	$PCRE/Makefile
 	&& \$(MAKE) libpcre2-8.la
 
 END
+
+        fi
 
     fi
 

@@ -63,6 +63,37 @@ END
             *)  ngx_prefix="$PWD/$OPENSSL/.openssl" ;;
         esac
 
+        # auto/lib/openssl/make может выполняться НЕСКОЛЬКО РАЗ за один прогон
+        # ./auto/configure (отдельно под --with-http_ssl_module, --with-mail,
+        # --with-stream_ssl_module и т.п.). Если правило для этой цели уже
+        # один раз записано в $NGX_MAKEFILE - второй раз ничего не добавляем,
+        # иначе get make два правила на одну цель и использует ПОСЛЕДНЕЕ
+        # (тихо перезаписывая первое), что при "плавающем" $PWD между вызовами
+        # может внезапно откатить нас на деструктивный вариант с нуля.
+        if grep -q "^$OPENSSL/.openssl/include/openssl/ssl.h:" "$NGX_MAKEFILE" 2>/dev/null
+        then
+            :   # правило для этой цели уже сгенерировано на этом прогоне - пропускаем
+
+        # Если .a файлы и заголовки уже собраны - не гоняем "make clean && rebuild"
+        # заново при каждом запуске ./auto/configure (иначе target ssl.h всегда
+        # считается устаревшим, т.к. зависит от $NGX_MAKEFILE, который каждый
+        # раз пересоздаётся с нуля). Цель без зависимостей make сочтёт
+        # выполненной один раз навсегда, пока файл физически существует.
+        elif [ -f "$ngx_prefix/lib/libssl.a" ] \
+            && [ -f "$ngx_prefix/lib/libcrypto.a" ] \
+            && [ -f "$ngx_prefix/include/openssl/ssl.h" ]
+        then
+            echo " + OpenSSL already built in $ngx_prefix, skipping rebuild"
+
+            cat << END                                            >> $NGX_MAKEFILE
+
+$OPENSSL/.openssl/include/openssl/ssl.h:
+	@echo "OpenSSL already built, skipping"
+
+END
+
+        else
+
         cat << END                                            >> $NGX_MAKEFILE
 
 $OPENSSL/.openssl/include/openssl/ssl.h:	$NGX_MAKEFILE
@@ -73,6 +104,8 @@ $OPENSSL/.openssl/include/openssl/ssl.h:	$NGX_MAKEFILE
 	&& \$(MAKE) install_sw LIBDIR=lib
 
 END
+
+        fi
 
     ;;
 
