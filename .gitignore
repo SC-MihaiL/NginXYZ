@@ -12,6 +12,11 @@
 /auto/types/
 /objs/addon/
 /objs/src/
+!/objs/temp/
+!/objs/pid/
+!/objs/logs/
+!/objs/logs/.gitkeep
+/objs/logs/*
 /objs/autoconf.err
 /objs/Makefile
 /objs/ngx_auto_config.h
