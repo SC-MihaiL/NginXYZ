@@ -7,8 +7,6 @@
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](./LICENSE)
 
-*(English version: [README.md](./README.md))*
-
 ---
 
 ## Зачем это нужно
