@@ -1,6 +1,14 @@
-# NginXYZ
-
-**Кастомная высокопроизводительная нативная сборка nginx для Windows 10/11** — со статической линковкой, агрессивной оптимизацией и большим набором популярных сторонних модулей (LuaJIT/OpenResty, njs, Brotli, Zstd, GeoIP2 и др.), которые обычно приходится собирать вручную по отдельности.
+<table>
+  <tr>
+    <td width="160" valign="top" style="border: none;">
+      <img src="./NginXYZ.png" width="150">
+    </td>
+    <td valign="top" style="border: none;">
+      <h1 style="border-bottom: none; margin-top: 0;">NginXYZ</h1>
+      <p><strong>Кастомная высокопроизводительная нативная сборка nginx для Windows 10/11</strong> — со статической линковкой, агрессивной оптимизацией и большим набором популярных сторонних модулей (LuaJIT/OpenResty, njs, Brotli, Zstd, GeoIP2 и др.), которые обычно приходится собирать вручную по отдельности.</p>
+    </td>
+  </tr>
+</table>
 
 > Форк [nginx/nginx](https://github.com/nginx/nginx). Собирается через MSYS2/MinGW-w64.
 
