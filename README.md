@@ -1,10 +1,14 @@
-<img src="./NginXYZ.png" align="left" width="150" hspace="15">
-
-# NginXYZ
-
-**A custom, high-performance native nginx build for Windows 10/11** — statically linked, aggressively optimized, and bundled with a large stack of popular third-party modules (LuaJIT/OpenResty ecosystem, njs, Brotli, Zstd, GeoIP2, and more) that normally require piecing together a build yourself.
-
-<br clear="left"/>
+<table>
+  <tr>
+    <td width="160" valign="top" style="border: none;">
+      <img src="./NginXYZ.png" width="150">
+    </td>
+    <td valign="top" style="border: none;">
+      <h1 style="border-bottom: none; margin-top: 0;">NginXYZ</h1>
+      <p><strong>A custom, high-performance native nginx build for Windows 10/11</strong> — statically linked, aggressively optimized, and bundled with a large stack of popular third-party modules (LuaJIT/OpenResty ecosystem, njs, Brotli, Zstd, GeoIP2, and more) that normally require piecing together a build yourself.</p>
+    </td>
+  </tr>
+</table>
 
 > Forked from [nginx/nginx](https://github.com/nginx/nginx). Built with MSYS2/MinGW-w64.
 
