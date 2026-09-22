@@ -173,8 +173,8 @@ echo "--- Starting configure ---"
     --with-http_random_index_module \
     --with-http_secure_link_module \
     --with-http_slice_module \
-    --with-http_stub_status_module \
     --with-http_json_module \
+    --with-http_stub_status_module \
     --with-mail \
     --with-stream \
     --with-stream_ssl_module \
@@ -215,6 +215,7 @@ echo "--- Starting configure ---"
     --add-module=../testcookie-nginx-module \
     --add-module=../nginx-http-flv-module \
     --add-module=../ngx_http_proxy_connect_module \
+    --add-module=../socks-nginx-module \
     --add-module=../nginx-dav-ext-module \
     --add-module=../ngx_cache_purge \
     --add-module=../ngx_http_geoip2_module && \

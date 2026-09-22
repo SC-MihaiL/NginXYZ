@@ -34,7 +34,7 @@ NginXYZ does that work for you: one `build.sh` script that configures and static
 - **GeoIP2** support via `ngx_http_geoip2_module` + libmaxminddb.
 - **Image processing** — `http_image_filter_module` with GD, WebP, and imagequant.
 - **Observability** — live status via `nginx-module-vts`.
-- **Caching & proxying extras** — `srcache-nginx-module`, `memc`/`redis`/`redis2` modules, `ngx_cache_purge`, `ngx_http_proxy_connect_module`.
+- **Caching & proxying extras** — `srcache-nginx-module`, `memc`/`redis`/`redis2` modules, `ngx_cache_purge`, `ngx_http_proxy_connect_module`, `socks-nginx-module`.
 - **Streaming** — `nginx-http-flv-module`, `http_mp4_module`, `http_flv_module`.
 - **Optimized for the target CPU** — compiled with `-O3 -march=native -flto`, PIE, stack protector, and TFO enabled.
 

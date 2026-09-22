@@ -32,7 +32,7 @@ NginXYZ берёт эту работу на себя: один скрипт `bui
 - **GeoIP2** через `ngx_http_geoip2_module` + libmaxminddb.
 - **Обработка изображений** — `http_image_filter_module` с GD, WebP и imagequant.
 - **Наблюдаемость** — живая статистика через `nginx-module-vts`.
-- **Кэширование и проксирование** — `srcache-nginx-module`, модули `memc`/`redis`/`redis2`, `ngx_cache_purge`, `ngx_http_proxy_connect_module`.
+- **Кэширование и проксирование** — `srcache-nginx-module`, модули `memc`/`redis`/`redis2`, `ngx_cache_purge`, `ngx_http_proxy_connect_module`, `socks-nginx-module`.
 - **Стриминг** — `nginx-http-flv-module`, `http_mp4_module`, `http_flv_module`.
 - **Оптимизация под конкретный CPU** — сборка с флагами `-O3 -march=native -flto`, PIE, stack protector и включённым TFO.
 
